@@ -110,10 +110,13 @@ INSERT INTO `ql_furama`.`bophan` (`idBoPhan`, `TenBoPhan`) VALUES ('3', 'bo phan
 
 INSERT INTO `ql_furama`.`nhanvien` (`idNhanVien`, `HoTen`, `idViTri`, `idTrinhDo`, `idBoPhan`, `NgaySinh`, `SoCMND`, `Luong`, `SDT`, `Email`, `DiaChi`) VALUES ('1', 'duong hung', '2', '1', '3', '1999/04/03', '1243', '60000', '35738', 'th@gmail.com', 'hai chau');
 
+/*cau 2 */
 select * from NhanVien where ((HoTen like '% H%' ) or (HoTen like '% D%' )  or (HoTen like '% T%' )) and length(HoTen)  <=15;
 
+/*cau 3 */
 select * from NhanVien where year(curdate())-year(NgaySinh) between 18 and 50 and DiaChi in ('da nang','quang tri') ;
 
+/*cau 4 */
 SELECT distinct KhachHang.HoTen, count(hopdong.idKhachHang) as solandatphong
 FROM KhachHang
  INNER JOIN HopDong
@@ -124,7 +127,7 @@ group by hopdong.idKhachHang,LoaiKhach.TenLoaiKhach
 having TenLoaiKhach ='diamond'
 order by count(hopdong.idKhachHang);
 
-
+/*cau 5 */
 select kh.idKhachHang,kh.HoTen,lk.TenLoaiKhach,hd.idHopDong,dv.TenDichVu,hd.NgayLamHopDong,hd.NgayKetThuc,dv.ChiPhiThue+hdct.SoLuong*dvdk.Gia as tongtien
 from KhachHang kh 
 left join LoaiKhach lk
@@ -139,20 +142,115 @@ left join DichVuDikem dvdk
 on hdct.idDichVuDiKem=dvdk.idDichVuDiKem;
 
 
-
-select dv.idDichVu,dv.TenDichVu,dv.DienTich,dv.ChiPhiThue,ldv.TenDichVu
+/*cau 6 */
+select dv.idDichVu,dv.TenDichVu,dv.DienTich,dv.ChiPhiThue,ldv.TenLoaiDichVu 
 from DichVu dv
 inner join LoaiDichVu ldv
  on dv.idLoaiDichVu=ldv.IdLoaiDichVu
   left join HopDong hd
  on  dv.idDichVu= hd.idDichVu
 where (month(hd.NgayLamHopDong)<=3 and year(hd.NgayLamHopDong)<=2019) or hd.NgayLamHopDong is null;
- 
- 
 
+ /*cau 7 */
+ select  dv.idDichVu,dv.TenDichVu,dv.DienTich,dv.ChiPhiThue,ldv.TenLoaiDichVu,dv.SoNguoiToiDa
+from DichVu dv
+inner join LoaiDichVu ldv
+ on dv.idLoaiDichVu=ldv.IdLoaiDichVu
+  left join HopDong hd
+ on  dv.idDichVu= hd.idDichVu
+where (( year(hd.NgayLamHopDong) = 2018) and (hd.idDichVu not  in (select distinct idDichVu from HopDong where year(NgayLamHopDong)= 2019 )));
 
+/*cau 8 */
+/*cach1 */
+select distinct HoTen as hotenkhachhang
+from KhachHang;
+/*cach2 */
+select HoTen  from KhachHang  group by HoTen;
+/*cach3 */
+select Hoten from KhachHang union select Hoten from KhachHang ;
 
+/*cau 9 */
+select month(NgayLamHopDong) as thang, count(month(NgayLamHopDong)) as songuoidat
+From HopDong
+where year(NgayLamHopDong)=2019
+Group by thang
+order by thang;
 
+/*cau 10*/
+select hd.idHopDong,NgayLamHopDong,NgayKetThuc,TienDatCoc,count(hdct.idHopDongChiTiet) as SoLuongDichVuDiKem
+from HopDong hd
+inner join HopDongChiTiet hdct
+on hd.idHopDong= hdct.idHopDong
+group by hd.idHopDong;
 
+/*cau 11*/
+select kh.idKhachHang,kh.HoTen,hd.NgayLamHopDong,dvdk.TenDichVuDiKem,lk.TenLoaiKhach,kh.DiaChi
+from KhachHang kh
+inner join LoaiKhach lk
+on kh.idLoaiKhach=lk.idLoaiKhach
+inner join HopDong hd
+on kh.idKhachHang=hd.idKhachHang
+inner join HopDongChiTiet hdct
+on hd.idHopDong=hdct.idHopDong
+inner join DichVuDiKem dvdk
+on dvdk.idDichVuDiKem=hdct.idDichVuDiKem
+where lk.TenLoaiKhach='diamond' and kh.DiaChi in('vinh','quang ngai');
 
+/*cau 12*/
+select hd.idHopDong,nv.HoTen as hotennhanvien,kh.HoTen as hotenkhachhang ,kh.SDT as sodienthoaikhachhang,dv.TenDichVu,sum(hdct.idHopDongChiTiet) as soluongdichvudikem,hd.TienDatCoc
+from HopDong hd
+inner join NhanVien nv
+on hd.idNhanVien=nv.idNhanVien
+inner join KhachHang kh
+on hd.idKhachHang=kh.idKhachHang
+inner join DichVu dv
+on hd.idDichVu=dv.idDichVu
+inner join HopDongChiTiet hdct
+on hd.idHopDong=hdct.idHopDongChiTiet
+where (month(hd.NgayLamHopDong)>9 and year(hd.NgayLamHopDong)=2019) and (hd.NgayLamHopDong not in (select NgayLamHopDong from HopDong where  month(NgayLamHopDong)<7 and year(NgayLamHopDong)=2019))
+group by hd.idHopDong;
 
+/*cau 13*/
+select  dvdk.idDichVuDikem,dvdk.TenDichVuDiKem,dvdk.Gia,dvdk.DonVi,dvdk.TrangThaiKhaDung,  count(dvdk.idDichVuDiKem) as  DatNhieuNhat 
+from HopDong hd
+inner join HopDongChiTiet hdct
+on hd.idhopDong=hdct.idHopDong
+inner join DichVuDikem dvdk
+on dvdk.idDichVuDiKem=hdct.idDichVuDiKem
+group by dvdk.idDichVuDiKem
+order by DatNhieuNhat desc
+limit 3;
+
+/*cau 14*/
+select hd.idHopDong,ldv.TenLoaiDichVu,dvdk.TenDichVuDiKem,dvdk.idDichVuDiKem,count(dvdk.idDichVuDiKem) as SoLanSuDung
+from HopDong hd
+inner join HopDongChiTiet hdct
+on hd.idHopDong=hdct.idHopDong
+inner join DichVuDiKem dvdk
+on dvdk.idDichVuDiKem=hdct.idDichVuDikem
+inner join DichVu dv
+on hd.idDichVu=dv.idDichVu
+inner join LoaiDichVu ldv
+on dv.idLoaiDichVu=ldv.idLoaiDichVu
+group by hd.idHopDong
+having  SoLanSuDung=1;
+
+/*cau 15*/
+select nv.idNhanVien,HoTen,td.TrinhDo,bp.TenBoPhan,SDT,DiaChi
+from NhanVien nv
+inner join TrinhDo td
+on nv.idTrinhDo=td.idTrinhDo
+inner join BoPhan bp
+on nv.idBoPhan=bp.idBoPhan
+inner join HopDong hd
+on nv.idNhanVien=hd.idNhanVien
+group by hd.idNhanVien
+having count(hd.idNhanVien)<=3;
+
+/*cau 16*/
+delete from NhanVien 
+where (idNhanVien not in (select distinct idNhanVien from HopDong where NgayLamHopDong between 2017 and 2019  )); 
+
+/*cau 17*/
+update LoaiKhach set TenLoaiKhach = 'loai khach 2'
+where (TenLoaiKhach='loai khach 1') and  (select TongTien from HopDong where TongTien >100 and year(NgayLamHopDong)=2021)
