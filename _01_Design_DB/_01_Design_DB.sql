@@ -251,6 +251,28 @@ having count(hd.idNhanVien)<=3;
 delete from NhanVien 
 where (idNhanVien not in (select distinct idNhanVien from HopDong where NgayLamHopDong between 2017 and 2019  )); 
 
-/*cau 17*/
-update LoaiKhach set TenLoaiKhach = 'loai khach 2'
-where (TenLoaiKhach='loai khach 1') and  (select TongTien from HopDong where TongTien >100 and year(NgayLamHopDong)=2021)
+--- câu 17:
+update khachhang set idloaikhach = 1
+where idKhachHang in (select idKhachHang from 
+(select idKhachHang
+from hopdong as a
+left join khachhang as b on b.id = a.idKhachHang
+where year(ngaylamhopdong) = 2019
+group by idKhachHang
+having count(idKhachHang) >=1) a);
+
+--- câu 18:
+delete from hopdongchitiet where id = id_hop_dong_chi_tiet;
+(select a.id as id_khach_hang, b.id as id_hop_dong, c.id as id_hop_dong_chi_tiet from hopdong b left join khachhang as a on a.id=b.id_khach_hang
+right join hopdongchitiet as c on b.id=c.id_hop_dong
+where year(b.ngay_lam_hop_dong) < 2016)
+;
+--- Câu 19:
+
+update dichvudikem 
+set gia = gia*2
+where id in (select a.id_dich_vu_di_kem from hopdongchitiet a, hopdong b where so_luong > 10 and year(b.ngay_lam_hop_dong) = 2019);
+--- câu 20:
+SELECT id as id,ho_ten,email,sdt,ngay_sinh,dia_chi FROM khachhang
+UNION 
+SELECT id as id,ho_ten,email,sdt,ngay_sinh,dia_chi FROM nhanvien;
