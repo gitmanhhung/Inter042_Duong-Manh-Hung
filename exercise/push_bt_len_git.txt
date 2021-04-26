@@ -1,6 +1,0 @@
-B1: vào foder -> chuột phải -> git base here -> mở cửa sổ git
-B2: nhập lệnh "git status" -> enter
-B3: nhập lệnh "git add ." -> enter
-B4: nhập lệnh "git commit" -> enter
-B5: gõ chữ "i" -> nhập comment muốn ghi chú -> bấm phím "ESC" -> nhập ":wq" -> enter
-B6: nhập lệnh "git push" -> chờ tý rồi lên github.com check xem file đã lên chưa là ok.
