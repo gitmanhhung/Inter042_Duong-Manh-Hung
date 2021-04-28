@@ -1,0 +1,149 @@
+
+.xanh
+    {
+         color: #006600;
+    }
+.xd
+{
+    color: #0000FF;
+}
+.h{
+    background-color: #FF3399;
+    color: #FECFFD;
+}
+.v{
+    background-color: #FFFFCC;
+}
+
+.d2{
+    color: darkcyan;
+}
+
+.d3{
+    color: red;
+}
+
+.nen{
+    background-color: #A06D21;
+    color: #FFCC00;
+}
+.nena{
+    background-color: #A06D21;
+    color: #FFFFFF;
+}
+
+.chen{
+    position: absolute;
+}
+
+.hinh{
+    background-color: orange;
+}
+
+/*exercise4*/
+.nen4{
+    background-image: url("zoro.jpg");
+    color: #008888;
+}
+
+.dv2{
+    background-color: #339999;
+    color: #FFFFFF;
+}
+
+/*exercise5*/
+.nen5{
+    background-color: #CCCCCC;
+    color: #0000CC;
+}
+
+
+/*exercise6*/
+
+.title{
+    color: orange;
+    border-style: double;
+    border-color: orange;
+}
+
+.f{
+    font-size: 300%;
+    color: red;
+}
+
+.ben{
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+    font-size: 200%;
+}
+
+.nenv{
+    background-color: orange;
+}
+
+
+/*exercise6*/
+.hong7{
+    color: #FF3399;
+}
+
+.font7{
+    background-color: #FF3399;
+    color: #FFFFFF;
+}
+
+.le{
+    margin-right: 50px;
+}
+
+/*exercise8*/
+
+
+.nen8{
+    background-color: #FFEDCA;
+}
+
+.heade8{
+    background-color: #CC6600;
+    color: white;
+}
+
+.colorVang{
+    color: darkorange;
+    text-align: center;
+}
+
+/*exercise9*/
+.nen9{
+    font- ;
+}
+.tb9{
+    border-collapse: collapse;
+    border-color: red;
+}
+.bl9{
+    background-color: #FF3399;
+    color: white;
+    border-color: white;
+}
+
+/*exercise-10*/
+
+.red{
+    background-color: #FF0000;
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+.red2{
+    background-color: #FFBBBB;
+    color: red;
+    font-size: 28px;
+}
+
+.red3{
+    color: #FF0000;
+    margin-left: 10px;
+    font-size: 20px;
+}
