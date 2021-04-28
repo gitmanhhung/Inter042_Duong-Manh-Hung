@@ -14,7 +14,7 @@ public class CsvReaderExample {
         BufferedReader br = null;
         try {
             String line;
-            br = new BufferedReader(new FileReader("C:\\Users\\Admin\\Desktop\\Inter042_Nguyen-Van-Tam\\FuramaResort\\src\\data\\contries.csv"));
+            br = new BufferedReader(new FileReader("C:\\Users\\Admin\\Desktop\\Inter042_Duong-Manh-Hung\\FuramaResort\\src\\data\\contries.csv"));
 
             // How to read file in java line by line?
             while ((line = br.readLine()) != null) {
