@@ -138,7 +138,7 @@ public class MainController {
     public static void addNewVilla(){
         CheckData checkData = new CheckData();
 
-        String fileName = "C:\\Users\\Admin\\Desktop\\Inter042_Nguyen-Van-Tam\\FuramaResort\\src\\data\\Villa.csv";
+        String fileName = "C:\\Users\\Admin\\Desktop\\Inter042_Duong-Manh-Hung\\FuramaResort\\src\\data\\Villa.csv";
 
         System.out.println("Nhập theo mẫu SVHO-YYYY với Y là các số 0-9 ex(SVHO-0001)");
         System.out.println("ID: ");
@@ -273,7 +273,7 @@ public class MainController {
 
         CheckData checkData = new CheckData();
 
-        String fileName = "C:\\Users\\Admin\\Desktop\\Inter042_Nguyen-Van-Tam\\FuramaResort\\src\\data\\House.csv";
+        String fileName = "C:\\Users\\Admin\\Desktop\\Inter042_Duong-Manh-Hung\\FuramaResort\\src\\data\\House.csv";
 
         System.out.println("Nhập theo mẫu SVHO-YYYY với Y là các số 0-9 ex(SVHO-0001)");
         System.out.println("ID: ");
@@ -391,7 +391,7 @@ public class MainController {
     }
     public static void addNewRoom(){
         CheckData checkData = new CheckData();
-        String fileName = "C:\\Users\\Admin\\Desktop\\Inter042_Nguyen-Van-Tam\\FuramaResort\\src\\data\\Room.csv";
+        String fileName = "C:\\Users\\Admin\\Desktop\\Inter042_Duong-Manh-Hung\\FuramaResort\\src\\data\\Room.csv";
 
         System.out.println("Nhập theo mẫu SVRO-YYYY với Y là các số 0-9 ex(SVRO-0001)");
         System.out.println("ID: ");
@@ -497,7 +497,7 @@ public class MainController {
         BufferedReader br = null;
         try {
             String line;
-            br = new BufferedReader(new FileReader("C:\\Users\\Admin\\Desktop\\Inter042_Nguyen-Van-Tam\\FuramaResort\\src\\data\\Room.csv"));
+            br = new BufferedReader(new FileReader("C:\\Users\\Admin\\Desktop\\Inter042_Duong-Manh-Hung\\FuramaResort\\src\\data\\Room.csv"));
 
             // How to read file in java line by line?
             while ((line = br.readLine()) != null) {
@@ -519,7 +519,7 @@ public class MainController {
         BufferedReader br = null;
         try {
             String line;
-            br = new BufferedReader(new FileReader("C:\\Users\\Admin\\Desktop\\Inter042_Nguyen-Van-Tam\\FuramaResort\\src\\data\\Villa.csv"));
+            br = new BufferedReader(new FileReader("C:\\Users\\Admin\\Desktop\\Inter042_Duong-Manh-Hung\\FuramaResort\\src\\data\\Villa.csv"));
 
             // How to read file in java line by line?
             while ((line = br.readLine()) != null) {
@@ -541,7 +541,7 @@ public class MainController {
         BufferedReader br = null;
         try {
             String line;
-            br = new BufferedReader(new FileReader("C:\\Users\\Admin\\Desktop\\Inter042_Nguyen-Van-Tam\\FuramaResort\\src\\data\\House.csv"));
+            br = new BufferedReader(new FileReader("C:\\Users\\Admin\\Desktop\\Inter042_Duong-Manh-Hung\\FuramaResort\\src\\data\\House.csv"));
 
             // How to read file in java line by line?
             while ((line = br.readLine()) != null) {
@@ -608,7 +608,7 @@ public class MainController {
 
     public static void addNewCustomer(){
 
-        String fileName = "C:\\Users\\Admin\\Desktop\\Inter042_Nguyen-Van-Tam\\FuramaResort\\src\\data\\Customer.csv";
+        String fileName = "C:\\Users\\Admin\\Desktop\\Inter042_Duong-Manh-Hung\\FuramaResort\\src\\data\\Customer.csv";
 
         System.out.println("Name: ");
         String name = GetStr();
